@@ -17,7 +17,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static com.lemkor.api.SensorApi.utils.ErrorsUtil.returnErrorsToClient;
@@ -61,8 +63,11 @@ public class MeasurementController {
     }
 
     @GetMapping("/rainyDaysCount")
-    public int getAllRainyDays() {
-        return measurementService.countAllByRaining(true);
+    public ResponseEntity<Map<String, Integer>> getAllRainyDays() {
+        int daysWithRain = measurementService.countAllByRaining(true);
+        Map<String, Integer> response = new HashMap<>();
+        response.put("rainyDaysCount", daysWithRain);
+        return ResponseEntity.ok(response);
     }
 
     @ExceptionHandler
