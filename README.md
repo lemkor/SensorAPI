@@ -11,7 +11,7 @@ This project is a Spring Boot-based REST API for managing data sent from Meteoro
 ## Endpoints
 
 ### 1. Sensor Registration
-**POST** `/sensors/registration`  
+**POST** `/sensors/register`  
 Registers a new sensor.  
 **Request Body (JSON):**
 ```json
